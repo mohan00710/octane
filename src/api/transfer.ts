@@ -8,7 +8,7 @@ import { cors, rateLimit } from '../middleware';
 export default async function (request: VercelRequest, response: VercelResponse) {
     await cors(request, response);
     await rateLimit(request, response);
-
+    console.log(request.body)
     // Deserialize a base58 wire-encoded transaction from the request
     const serialized = request.body?.transaction;
     if (typeof serialized !== 'string') throw new Error('invalid transaction');
